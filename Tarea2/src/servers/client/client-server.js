@@ -8,32 +8,40 @@ class ClientServer extends Server {
   constructor () {
     super(3000)
     super.routers(routerclient)
-    this.header = '****** MENU DE COMIDA ******'
-    this.footer = '******  GRACIAS!! ******'
+    this.header = '###### MENU DE COMIDA ######'
+    this.footer = '######  GRACIAS, VUELVA PRONTO ######'
     this.oHeader = '------------------   PEDIDO   ------------------'
     this.oFooter = '------------------    FIN     ------------------'
-    this.divider = '****************'
+    this.divider = '~°~°~°~°~°~°~°~°~°~°~°~°~°~°~°~°~°~°~°~°~°~°~°~°~°'
     this.reqAns = '------------- Esperando  respuesta -------------'
     this.msn = 'Elegir una opción\n'
     this.address = 'Ingrese su dirección'
     this.menuOptions = {
-      C0101: [50, 'Hamburguesa'],
-      C0102: [75, 'Pizza'],
-      C0103: [15, 'Papas'],
-      C0104: [50, 'Tacos'],
-      C0105: [36, 'Burrito'],
-      C0106: [99, 'Bebida'],
-      C0107: [50, 'Pollo'],
-      C0108: [75, 'Mariscos'],
-      C0109: [15, 'Arroz chino'],
-      C0110: [50, 'Orange Chicken'],
-      C0111: [36, 'Chao Mein']
+      Menu1: [100, 'Arroz chino'],
+      Menu2: [75, 'Mariscos'],
+      Menu3: [55, 'Hamburguesa'],
+      Menu4: [50, 'Orange Chicken'],
+      Menu5: [35, 'Pollo'],
+      Menu6: [25, 'Burrito'],
+      Menu7: [15, 'Tacos'],
+      Menu8: [10, 'Pizza'],
+      Menu9: [10, 'Papas'],
+      Menu10: [5, 'Bebida']
     }
     this.orderinfo = {}
   }
 
+  //enviar la orden al restaurante
   async placeOrder () {
+    //envia la orden al puerto 3001 que es del restaurante y llama a /accept del router del reception-router
     const data = await fetchQuery('http://127.0.0.1:3001/accept', 'POST', this.orderinfo)
+    console.log(`La orden se envió correctamente, pedido no. ${data.id}`)
+  }
+
+  //enviar la orden al motorista
+  async sendOrder () {
+    //envia la orden al puerto 3002 que es del motorista y llama a /accept del router del biker-router
+    const data = await fetchQuery('http://127.0.0.1:3002/accept', 'POST', this.orderinfo)
     console.log(`La orden se envió correctamente, pedido no. ${data.id}`)
   }
 
@@ -77,6 +85,7 @@ class ClientServer extends Server {
       await this.saveAdress()
       console.log(this.footer)
       await this.placeOrder()
+      await this.sendOrder()
       console.log(this.reqAns)
     } else {
       console.log('Orden cancelada...')

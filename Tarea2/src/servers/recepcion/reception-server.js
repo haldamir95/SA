@@ -34,7 +34,7 @@ class ReceptionServer extends Server {
   placeOrder (index) {
     const { id, address } = receptioncontroller.orders[index]
     //(URL, metodo(POST o GET), Body(JSON))                                        .then es la respuesta 
-    fetchQuery(configuration.DELIVERY_API_URL + '/accept', 'POST', { id, address }).then(res => {
+    fetchQuery('127.0.0.1:3002/accept', 'POST', { id, address }).then(res => {
       if (res.success) {
         console.log('Orden colocada')
       } else {
