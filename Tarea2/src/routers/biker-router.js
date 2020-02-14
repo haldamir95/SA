@@ -16,9 +16,11 @@ class BikerRouter {
 
   //metodo para aceptar una orden
   async acceptOrder (req, res) {
+    console.log('ENTRANDO A ACEPTAR ORDEN')
     const { address, ...order } = req.body
     console.log(address)
-    //receptioncontroller.addOrder(order)
+    console.log(order)
+    bikerController.addOrder(order)
     //await receptioncontroller.writeAllOrders()
     res.send({ success: true, id: bikerController.orderId })
   }
@@ -27,5 +29,5 @@ class BikerRouter {
 //instanciamos la clase Router
 const motia = new BikerRouter()
 //al router le creamos el metodo get con su funcion adjunta (Como en el web.php de laravel)
-routerV1.get('/get', motia.EncenderMoto)
+//routerV1.get('/get', motia.EncenderMoto)
 routerV1.post('/accept', motia.acceptOrder)

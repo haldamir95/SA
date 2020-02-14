@@ -27,6 +27,14 @@ class LineReader {
     return /^S|s$/.test(data)
   }
 
+
+  async askAddMoreQuestion (question) {
+    let data = ''
+    while (!/^S|N|s|n$/.test(data = await this.askQuestion('Desea ingresar otra orden: (S/N): ')));
+    return /^S|s$/.test(data)
+  }
+
+
   close () {
     this.rl.close()
   }

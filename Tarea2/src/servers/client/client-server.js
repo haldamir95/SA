@@ -85,15 +85,19 @@ class ClientServer extends Server {
       await this.saveAdress()
       console.log(this.footer)
       await this.placeOrder()
-      await this.sendOrder()
+      //await this.sendOrder()
       console.log(this.reqAns)
+      //console.log(this.add)
+      /*if(await lineReader.askAddMoreQuestion()){
+        this.start()
+      }*/
     } else {
       console.log('Orden cancelada...')
     }
   }
 
   async saveAdress () {
-    const address = await lineReader.askQuestion('Ingrese dirección')
+    const address = await lineReader.askQuestion('Ingrese dirección: ')
     console.log(address)
     this.orderinfo.address = address
   }

@@ -5,6 +5,7 @@ class ReceptionController {
   constructor () {
     this.orders = []
     this.orderId = 1
+    this.address = ''
     //this.readPendingOrders()
   }
 
@@ -17,8 +18,9 @@ class ReceptionController {
     }
   }
 
-  addOrder (order) {
-    const nOrder = { ...order, status: 0, id: this.orderId++ }
+  addOrder (order, address) {
+    this.address = address
+    const nOrder = { ...order, status: 0, id: this.orderId++, address: this.address }
     this.orders.push(nOrder)
     return true
   }

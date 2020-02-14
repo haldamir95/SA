@@ -5,6 +5,7 @@ class BikerController {
   constructor () {
     this.orders = []
     this.orderId = 1
+    this.address = ''
     //this.readPendingOrders()
   }
 
@@ -18,7 +19,8 @@ class BikerController {
   }
 
   addOrder (order) {
-    const nOrder = { ...order, status: 0, id: this.orderId++ }
+    this.address = order.address
+    const nOrder = { ...order, status: 0, id: this.orderId++, addres: this.address}
     this.orders.push(nOrder)
     return true
   }

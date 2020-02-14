@@ -25,16 +25,23 @@ class ReceptionServer extends Server {
       console.log('------ No hay ordenes pendientes ------')
       return
     }
-    let opt = -1
-    while (!orders.includes(opt = await lineReader.askNumericQuestion('Elegir número de orden\n')));
-    receptioncontroller.changeStatus(opt, 1)
-    //this.placeOrder(opt)
+    let opt = -1//el que recibe el numero que ingresas
+    if(opt = await lineReader.askNumericQuestion('Elegir número de orden\n')){
+      console.log('LA ORDEN SELECCIONADA')
+      receptioncontroller.changeStatus(opt-1, 1)
+      console.log(receptioncontroller.orders[opt-1])
+      console.log('ESTATUS DE LA ORDEN SELECCIONADA')
+      this.placeOrder(opt-1)
+    }
+    
   }
 
   placeOrder (index) {
-    const { id, address } = receptioncontroller.orders[index]
+    //const { id, address } = receptioncontroller.orders[index]
+    console.log('el body ',receptioncontroller.orders[index])
+    //console.log('placeOrder ->',id,' address -> ',address)
     //(URL, metodo(POST o GET), Body(JSON))                                        .then es la respuesta 
-    fetchQuery('127.0.0.1:3002/accept', 'POST', { id, address }).then(res => {
+    fetchQuery('http://127.0.0.1:3002/accept', 'POST', receptioncontroller.orders[index]).then(res => {
       if (res.success) {
         console.log('Orden colocada')
       } else {

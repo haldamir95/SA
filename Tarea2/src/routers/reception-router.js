@@ -8,8 +8,8 @@ export const routerV1 = express.Router()
 class Reception {
   async acceptOrder (req, res) {
     const { address, ...order } = req.body
-    console.log(address)
-    receptioncontroller.addOrder(order)
+    receptioncontroller.addOrder(order, address)
+    //console.log(receptioncontroller.orders)
     //await receptioncontroller.writeAllOrders()
     res.send({ success: true, id: receptioncontroller.orderId })
   }
