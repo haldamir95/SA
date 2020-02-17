@@ -34,7 +34,7 @@ class ClientServer extends Server {
   //enviar la orden al restaurante
   async placeOrder () {
     //envia la orden al puerto 3001 que es del restaurante y llama a /accept del router del reception-router
-    const data = await fetchQuery('http://127.0.0.1:3001/accept', 'POST', this.orderinfo)
+    const data = await fetchQuery('http://127.0.0.1:3003/acceptClient', 'POST', this.orderinfo)
     console.log(`La orden se envió correctamente, pedido no. ${data.id}`)
   }
 
