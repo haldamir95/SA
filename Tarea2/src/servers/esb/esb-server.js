@@ -19,16 +19,9 @@ class EsbServer extends Server{
     }
 
     async start () {
-        //console.log(this.consoleMsn)
+        console.log(this.consoleMsn)
         //this.mostrarTransacciones()
-        const opt = -1
-        while (true) {
-          if(esbcontroller.cambio){
-              console.log('HUBO UN CAMBIO')
-              esbcontroller.cambio = false
-              console.log('ahora la variable es = ',esbcontroller.cambio)
-          }
-        }
+        
     }
 
 

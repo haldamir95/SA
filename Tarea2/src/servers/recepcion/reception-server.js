@@ -41,7 +41,7 @@ class ReceptionServer extends Server {
     console.log('el body ',receptioncontroller.orders[index])
     //console.log('placeOrder ->',id,' address -> ',address)
     //(URL, metodo(POST o GET), Body(JSON))                                        .then es la respuesta 
-    fetchQuery('http://127.0.0.1:3002/accept', 'POST', receptioncontroller.orders[index]).then(res => {
+    fetchQuery('http://127.0.0.1:3003/acceptReception', 'POST', receptioncontroller.orders[index]).then(res => {
       if (res.success) {
         console.log('Orden colocada')
       } else {
