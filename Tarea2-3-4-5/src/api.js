@@ -8,7 +8,8 @@ const router = express.Router();
 
 router.get('/', (req, res) =>{
     res.json({
-        'Mi_Amor': 'Melissa! <3'
+        'Nombre': 'Alan Guzman',
+        'Carnet': '201314733'
     });
 });
 
