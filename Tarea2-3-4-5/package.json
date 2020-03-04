@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "encoding": "^0.1.12",
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "netlify-lambda": "^1.6.3",
