@@ -10,7 +10,7 @@ router.get('/', (req, res) =>{
         "dirname": __dirname,
         "proces": process.cwd()
     });*/
-    res.sendfile(path.join(process.cwd(), './index.html'));
+    res.sendfile('./index.html');
 });
 
 router.get('/descarga', (req, res) =>{
