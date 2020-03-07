@@ -6,10 +6,10 @@ const app = express();
 const router = express.Router();
 
 router.get('/', (req, res) =>{
-    /*res.json({
+    res.json({
         "dirname": __dirname,
         "proces": process.cwd()
-    });*/
+    });
     res.sendfile('index.html');
 });
 
