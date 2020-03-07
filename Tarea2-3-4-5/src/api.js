@@ -5,20 +5,21 @@ const app = express();
 
 const router = express.Router();
 
-router.get('/', (req, res) =>{
-    res.json({
+/*router.get('/', (req, res) =>{
+    /*res.json({
         "dirname": __dirname,
         "proces": process.cwd()
     });
     res.sendfile('index.html');
-});
+});*/
+
 
 router.get('/descarga', (req, res) =>{
    res.download(path.join(process.cwd(), '/dist', 'archive.tar.gz')); //folder en el servidor con archivos
 });
 
 app.use('/.netlify/functions/api',router);
-
+app.use('/', (req,res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 
 module.exports.handler = serverless(app);
