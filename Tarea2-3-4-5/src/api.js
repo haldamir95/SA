@@ -6,11 +6,11 @@ const app = express();
 const router = express.Router();
 
 router.get('/', (req, res) =>{
-    res.json({
+    /*res.json({
         "dirname": __dirname,
         "proces": process.cwd()
-    });
-    //res.sendfile(path.join(process.cwd(), './src/index.html'));
+    });*/
+    res.sendfile(path.join(process.cwd(), './index.html'));
 });
 
 router.get('/descarga', (req, res) =>{
