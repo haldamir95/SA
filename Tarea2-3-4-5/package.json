@@ -16,7 +16,7 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "netlify-lambda": "^1.6.3",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "serverless-http": "^2.3.2"
   }
 }
